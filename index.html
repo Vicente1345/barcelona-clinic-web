@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barcelona Clinic | Estética Avanzada · Puerto Varas</title>
+  <meta name="description" content="Clínica de estética avanzada en Puerto Varas. Tratamientos faciales, Endymed y Hidrofacial exclusivos en la zona. Agenda tu evaluación gratuita." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rose:       #C17A8B;
+      --rose-light: #F0D4DC;
+      --rose-pale:  #FBF0F3;
+      --lila:       #9B8EC4;
+      --lila-light: #E8E0F5;
+      --lila-pale:  #F5F2FB;
+      --gold:       #C9A96E;
+      --gold-light: #F5EDD9;
+      --cream:      #FAF7F4;
+      --cream-dark: #EFE8E1;
+      --sage:       #7A9E8A;
+      --sage-light: #D8EBE2;
+      --navy:       #1C1A2E;
+      --navy-mid:   #2E2847;
+      --text:       #3A2D3F;
+      --text-light: #7A6E80;
+      --white:      #FFFFFF;
+      --shadow-soft: 0 8px 32px rgba(60,30,60,.08);
+      --shadow-card: 0 4px 20px rgba(60,30,60,.09);
+      --shadow-lg:   0 20px 60px rgba(60,30,60,.13);
+      --radius:      20px;
+      --radius-lg:   28px;
+      --max:         1180px;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── UTILITIES ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .serif     { font-family: var(--serif); }
+    .kicker {
+      font-size: 11px; font-weight: 700; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--rose); display: block;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 500;
+      line-height: 1.12;
+      color: var(--navy);
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .section-sub {
+      font-size: 17px; line-height: 1.7; color: var(--text-light);
+      max-width: 600px; margin-top: 16px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: none; border-radius: 999px; padding: 14px 28px;
+      font-family: var(--sans); font-size: 14px; font-weight: 700;
+      cursor: pointer; transition: all .25s ease; text-decoration: none;
+    }
+    .btn-rose {
+      background: linear-gradient(135deg, var(--rose) 0%, #A5607A 100%);
+      color: #fff; box-shadow: 0 14px 28px rgba(193,122,139,.28);
+    }
+    .btn-rose:hover { transform: translateY(-2px); box-shadow: 0 20px 36px rgba(193,122,139,.35); }
+    .btn-outline {
+      background: transparent; color: var(--navy);
+      border: 1.5px solid rgba(60,40,70,.18);
+    }
+    .btn-outline:hover { background: var(--rose-pale); border-color: var(--rose); color: var(--rose); }
+    .btn-white {
+      background: #fff; color: var(--navy);
+      box-shadow: var(--shadow-card);
+    }
+    .btn-white:hover { transform: translateY(-1px); }
+    .badge {
+      display: inline-block; padding: 5px 13px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .badge-rose   { background: var(--rose-light); color: var(--rose); }
+    .badge-lila   { background: var(--lila-light); color: var(--lila); }
+    .badge-gold   { background: var(--gold-light); color: #9B7230; }
+    .badge-sage   { background: var(--sage-light); color: #3F7558; }
+    .badge-navy   { background: var(--navy); color: #fff; }
+
+    /* ── NAV ── */
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px) saturate(1.4);
+      background: rgba(250,247,244,.88);
+      border-bottom: 1px solid rgba(193,122,139,.14);
+    }
+    .nav-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 0;
+    }
+    .logo { display: flex; flex-direction: column; gap: 1px; }
+    .logo-main {
+      font-family: var(--serif); font-size: 24px; font-weight: 700;
+      color: var(--navy); letter-spacing: .01em;
+    }
+    .logo-sub {
+      font-size: 10px; font-weight: 600; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--rose);
+    }
+    .nav-links {
+      display: flex; gap: 28px; list-style: none; align-items: center;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--text-light);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta { margin-left: 10px; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(150deg, var(--navy) 0%, #2A1F3D 55%, #3B2447 100%);
+      min-height: 90vh;
+      display: flex; align-items: center;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 999px; pointer-events: none;
+      filter: blur(80px); opacity: .35;
+    }
+    .hero-blob-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #C17A8B 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .hero-blob-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #9B8EC4 0%, transparent 70%);
+      bottom: -150px; left: -100px;
+    }
+    .hero-blob-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #C9A96E 0%, transparent 70%);
+      top: 60%; right: 25%; opacity: .2;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      padding: 90px 0 80px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 16px; border-radius: 999px;
+      background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.85); font-size: 12px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rose); }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 500; line-height: 1.04;
+      color: #fff; letter-spacing: -.02em;
+      margin-bottom: 22px;
+    }
+    .hero h1 em { font-style: italic; color: var(--rose-light); }
+    .hero-desc {
+      font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.7);
+      margin-bottom: 36px; max-width: 520px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-card {
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .hero-card-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: .24em;
+      text-transform: uppercase; color: var(--rose-light); margin-bottom: 20px;
+    }
+    .hero-card h3 {
+      font-family: var(--serif); font-size: 28px; font-weight: 500;
+      color: #fff; margin-bottom: 14px; line-height: 1.2;
+    }
+    .hero-card p { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.7; }
+    .hero-feats {
+      margin-top: 22px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .hero-feat {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.5;
+    }
+    .hero-feat-icon {
+      width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(193,122,139,.25);
+      display: grid; place-items: center; font-size: 14px;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--white);
+      border-bottom: 1px solid rgba(60,30,60,.06);
+      padding: 22px 0;
+      box-shadow: 0 4px 24px rgba(60,30,60,.06);
+    }
+    .stats-inner {
+      display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;
+    }
+    .stat-item {
+      text-align: center; flex: 1; min-width: 120px;
+    }
+    .stat-num {
+      font-family: var(--serif); font-size: 36px; font-weight: 700;
+      color: var(--navy); display: block; line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px; color: var(--text-light); margin-top: 4px; font-weight: 500;
+    }
+
+    /* ── NOSOTROS ── */
+    .about { padding: 90px 0; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .about-img {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(150deg, var(--rose-pale) 0%, var(--lila-pale) 100%);
+      box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-img-ph {
+      text-align: center; color: var(--text-light); padding: 40px;
+    }
+    .about-img-ph .ph-icon { font-size: 60px; margin-bottom: 16px; }
+    .about-img-ph p { font-size: 14px; line-height: 1.6; }
+    .about-accent {
+      position: absolute; bottom: 24px; left: 24px;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+      border-radius: 16px; padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+    }
+    .about-accent strong { font-size: 20px; color: var(--navy); display: block; }
+    .about-accent span { font-size: 13px; color: var(--text-light); }
+    .about-text { padding: 10px 0; }
+    .about-feats {
+      margin-top: 32px; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .about-feat {
+      background: var(--white); border-radius: var(--radius);
+      padding: 18px; border: 1px solid rgba(60,30,60,.06);
+      box-shadow: var(--shadow-card);
+    }
+    .about-feat-icon { font-size: 22px; margin-bottom: 8px; }
+    .about-feat h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .about-feat p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+    /* ── TRATAMIENTOS ── */
+    .treatments { padding: 80px 0; background: var(--white); }
+    .treatments-head {
+      text-align: center; max-width: 640px; margin: 0 auto 56px;
+    }
+    .treatments-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .treatment-card {
+      background: var(--cream); border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(60,30,60,.06);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .treatment-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .treatment-img {
+      height: 200px;
+      background: linear-gradient(135deg, var(--rose-pale) 0%, var(--lila-pale) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+    }
+    .treatment-body { padding: 24px; }
+    .treatment-body h3 {
+      font-family: var(--serif); font-size: 20px; font-weight: 500;
+      color: var(--navy); margin-bottom: 8px;
+    }
+    .treatment-body p {
+      font-size: 14px; line-height: 1.65; color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .treatment-cta {
+      font-size: 13px; font-weight: 700; color: var(--rose);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+
+    /* ── TECNOLOGIA ── */
+    .tech {
+      padding: 90px 0;
+      background: linear-gradient(150deg, var(--navy) 0%, #1E1A3A 100%);
+      position: relative; overflow: hidden;
+    }
+    .tech-bg-blob {
+      position: absolute; border-radius: 999px; pointer-events: none;
+      filter: blur(100px); opacity: .18;
+    }
+    .tech-bg-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, #9B8EC4 0%, transparent 70%);
+      top: -200px; right: -200px;
+    }
+    .tech-bg-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #C17A8B 0%, transparent 70%);
+      bottom: -200px; left: -100px;
+    }
+    .tech-head { text-align: center; margin-bottom: 56px; position: relative; z-index: 2; }
+    .tech-head .kicker { color: var(--rose-light); }
+    .tech-head .section-title { color: #fff; }
+    .tech-head .section-sub { color: rgba(255,255,255,.65); margin: 14px auto 0; }
+    .tech-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+      position: relative; z-index: 2;
+    }
+    .tech-card {
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-lg); padding: 36px;
+      transition: border-color .25s, background .25s;
+    }
+    .tech-card:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(193,122,139,.4);
+    }
+    .tech-icon {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: linear-gradient(135deg, rgba(193,122,139,.3) 0%, rgba(155,142,196,.2) 100%);
+      display: grid; place-items: center; font-size: 28px; margin-bottom: 22px;
+    }
+    .tech-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      background: rgba(122,158,138,.25);
+      color: #9BE3C0; font-size: 11px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .tech-card h3 {
+      font-family: var(--serif); font-size: 26px; font-weight: 500;
+      color: #fff; margin-bottom: 14px;
+    }
+    .tech-card p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,.65); margin-bottom: 20px; }
+    .tech-feats { list-style: none; }
+    .tech-feats li {
+      font-size: 14px; color: rgba(255,255,255,.75);
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.07);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .tech-feats li:last-child { border-bottom: none; }
+    .tech-feats li::before {
+      content: "✓"; width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(122,158,138,.3); color: #9BE3C0;
+      display: grid; place-items: center; font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ── PROMOCIONES ── */
+    .promos { padding: 90px 0; background: var(--cream-dark); }
+    .promos-head { text-align: center; margin-bottom: 56px; }
+    .promos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .promo-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 32px; border: 1px solid rgba(60,30,60,.07);
+      box-shadow: var(--shadow-card); position: relative;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .promo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .promo-card.featured {
+      background: linear-gradient(150deg, var(--navy) 0%, #2A1F3D 100%);
+      border-color: transparent;
+      color: #fff;
+    }
+    .promo-tag {
+      position: absolute; top: -12px; left: 24px;
+      padding: 5px 14px; border-radius: 999px; font-size: 11px;
+      font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .promo-tag.popular { background: var(--rose); color: #fff; }
+    .promo-tag.exclusive { background: var(--gold); color: #fff; }
+    .promo-tag.first { background: var(--sage); color: #fff; }
+    .promo-card h3 {
+      font-family: var(--serif); font-size: 22px; font-weight: 500;
+      margin: 18px 0 8px;
+    }
+    .promo-card .featured h3 { color: #fff; }
+    .promo-price {
+      font-size: 38px; font-weight: 800; line-height: 1; margin: 16px 0 6px;
+      color: var(--navy);
+    }
+    .promo-card.featured .promo-price { color: var(--rose-light); }
+    .promo-currency { font-size: 18px; font-weight: 600; vertical-align: top; margin-top: 8px; display: inline-block; }
+    .promo-per { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+    .promo-card.featured .promo-per { color: rgba(255,255,255,.6); }
+    .promo-feats { list-style: none; margin-bottom: 24px; }
+    .promo-feats li {
+      font-size: 14px; padding: 7px 0;
+      border-bottom: 1px solid rgba(60,30,60,.06); color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .promo-card.featured .promo-feats li {
+      color: rgba(255,255,255,.75);
+      border-bottom-color: rgba(255,255,255,.1);
+    }
+    .promo-feats li::before { content: "✓"; color: var(--sage); font-weight: 800; font-size: 12px; }
+    .promo-feats li:last-child { border-bottom: none; }
+
+    /* ── GALERIA ── */
+    .gallery { padding: 90px 0; background: var(--white); }
+    .gallery-head { text-align: center; margin-bottom: 48px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--rose-pale) 0%, var(--lila-pale) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      transition: transform .25s;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item.tall { grid-row: span 2; aspect-ratio: unset; }
+    .gallery-ph {
+      text-align: center; padding: 20px;
+    }
+    .gallery-ph .ph-icon { font-size: 36px; margin-bottom: 8px; }
+    .gallery-ph p { font-size: 12px; color: var(--text-light); font-weight: 600; }
+    .gallery-cta { text-align: center; margin-top: 36px; }
+    .gallery-ig {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1.5px solid rgba(60,30,60,.14); border-radius: 999px;
+      padding: 12px 22px; font-size: 14px; font-weight: 600;
+      color: var(--text); transition: all .2s;
+    }
+    .gallery-ig:hover { border-color: var(--rose); color: var(--rose); }
+
+    /* ── TESTIMONIOS ── */
+    .testimonials { padding: 90px 0; background: var(--lila-pale); }
+    .testimonials-head { text-align: center; margin-bottom: 52px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .testi-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 28px; box-shadow: var(--shadow-card);
+      border: 1px solid rgba(155,142,196,.1);
+      transition: transform .25s;
+    }
+    .testi-card:hover { transform: translateY(-3px); }
+    .testi-stars { color: #E2A336; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+    .testi-text {
+      font-family: var(--serif); font-size: 16px; font-style: italic;
+      line-height: 1.7; color: var(--text); margin-bottom: 22px;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose) 0%, var(--lila) 100%);
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 14px; color: #fff; flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 15px; color: var(--navy); }
+    .testi-service { font-size: 13px; color: var(--text-light); }
+
+    /* ── DISPONIBILIDAD ── */
+    .availability { padding: 90px 0; background: var(--cream); }
+    .availability-head { text-align: center; margin-bottom: 48px; }
+    .avail-wrap {
+      background: var(--white); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(60,30,60,.06);
+      overflow: hidden;
+    }
+    .avail-header {
+      background: linear-gradient(150deg, var(--navy) 0%, #2A1F3D 100%);
+      padding: 24px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .avail-header-left h3 {
+      font-family: var(--serif); font-size: 22px; color: #fff;
+      font-weight: 500; margin-bottom: 4px;
+    }
+    .avail-header-left p { font-size: 13px; color: rgba(255,255,255,.6); }
+    .avail-refresh { font-size: 12px; color: rgba(255,255,255,.5); }
+    .avail-body { padding: 24px 28px; }
+    .box-switch {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;
+    }
+    .box-btn {
+      border-radius: 999px; padding: 10px 20px;
+      border: 1.5px solid rgba(155,142,196,.25);
+      background: var(--white); color: var(--text);
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all .2s; font-family: var(--sans);
+    }
+    .box-btn.active {
+      background: linear-gradient(135deg, var(--rose) 0%, #A5607A 100%);
+      color: #fff; border-color: transparent;
+      box-shadow: 0 8px 20px rgba(193,122,139,.25);
+    }
+    .calendar-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .week-nav { display: flex; align-items: center; gap: 10px; }
+    .week-nav button {
+      border-radius: 999px; border: 1.5px solid rgba(60,30,60,.12);
+      background: var(--white); padding: 9px 16px;
+      cursor: pointer; font-size: 13px; color: var(--text);
+      font-weight: 700; transition: all .2s; font-family: var(--sans);
+    }
+    .week-nav button:hover { border-color: var(--rose); color: var(--rose); }
+    .week-nav button:disabled { opacity: .4; cursor: not-allowed; }
+    .week-label { font-size: 14px; font-weight: 800; color: var(--navy); min-width: 150px; text-align: center; }
+    .legend {
+      display: flex; gap: 18px; flex-wrap: wrap;
+      font-size: 13px; color: var(--text-light); margin-bottom: 18px;
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .legend i { width: 13px; height: 13px; border-radius: 4px; display: inline-block; }
+    .cal-scroll { overflow-x: auto; }
+    .cal-table {
+      width: 100%; border-collapse: separate; border-spacing: 0 5px;
+      min-width: 680px;
+    }
+    .cal-table th {
+      font-size: 12px; color: var(--text-light); font-weight: 700;
+      text-align: center; padding: 8px 6px;
+    }
+    .cal-table th:first-child { text-align: left; position: sticky; left: 0; background: #fff; z-index: 1; }
+    .cal-table td { padding: 0 5px; text-align: center; font-size: 12px; }
+    .cal-table td:first-child { position: sticky; left: 0; background: #fff; z-index: 1; }
+    .hour-lbl { font-size: 11px; color: #AAA; font-weight: 700; padding-right: 10px; }
+    .slot {
+      border-radius: 9px; padding: 9px 4px; font-weight: 800;
+      border: 1px solid transparent; font-size: 12px;
+    }
+    .slot.free   { background: #D8F5E4; color: #1F6B3A; border-color: #7EC99A; }
+    .slot.busy   { background: #FAE0E4; color: #A0364A; border-color: #E89AA5; }
+    .slot.past   { background: #F3F3F3; color: #B0B0B0; border-color: #DCDCDC; }
+    .avail-cta {
+      margin-top: 22px; padding: 20px 24px;
+      background: var(--rose-pale); border-radius: var(--radius);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+      border: 1px solid rgba(193,122,139,.15);
+    }
+    .avail-cta p { font-size: 15px; color: var(--text); line-height: 1.5; max-width: 480px; }
+    .avail-cta strong { color: var(--navy); }
+
+    /* ── CTA BAND ── */
+    .cta-section {
+      padding: 80px 0;
+      background: linear-gradient(150deg, var(--navy) 0%, #3B2447 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section:before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(193,122,139,.15) 0%, transparent 70%);
+    }
+    .cta-section h2 {
+      font-family: var(--serif); font-size: clamp(32px, 4vw, 50px);
+      font-weight: 500; color: #fff; margin-bottom: 18px; position: relative;
+    }
+    .cta-section h2 em { font-style: italic; color: var(--rose-light); }
+    .cta-section p { font-size: 17px; color: rgba(255,255,255,.65); margin-bottom: 34px; position: relative; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ── CONTACTO ── */
+    .contact { padding: 90px 0; background: var(--white); }
+    .contact-head { text-align: center; margin-bottom: 56px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .info-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px; background: var(--cream); border-radius: var(--radius);
+      border: 1px solid rgba(60,30,60,.06);
+    }
+    .info-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: var(--rose-light); display: grid; place-items: center; font-size: 20px;
+    }
+    .info-text h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .info-text p, .info-text a { font-size: 15px; color: var(--text-light); line-height: 1.5; }
+    .info-text a:hover { color: var(--rose); }
+    .contact-form {
+      background: var(--cream); border-radius: var(--radius-lg);
+      padding: 36px; border: 1px solid rgba(60,30,60,.07);
+    }
+    .contact-form h3 {
+      font-family: var(--serif); font-size: 24px; font-weight: 500;
+      color: var(--navy); margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .form-input {
+      width: 100%; padding: 13px 16px; border-radius: 12px;
+      border: 1.5px solid rgba(60,30,60,.12); background: var(--white);
+      font-family: var(--sans); font-size: 14px; color: var(--text);
+      transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .form-input:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(193,122,139,.1); }
+    .form-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6E80' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      width: 100%; padding: 16px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--rose) 0%, #A5607A 100%);
+      color: #fff; border: none; font-family: var(--sans);
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      transition: all .25s; letter-spacing: .04em;
+      box-shadow: 0 12px 28px rgba(193,122,139,.25);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(193,122,139,.35); }
+    .form-note { font-size: 12px; color: var(--text-light); margin-top: 12px; text-align: center; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--navy);
+      padding: 56px 0 28px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+    .footer-brand .logo-main { color: #fff; font-size: 22px; margin-bottom: 6px; }
+    .footer-brand .logo-sub { color: var(--rose); }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.7; margin-top: 14px; max-width: 260px; }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,.65); transition: color .2s; }
+    .footer-col a:hover { color: var(--rose-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.35); }
+
+    /* ── WHATSAPP BTN ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 8px 28px rgba(37,211,102,.4);
+      display: grid; place-items: center;
+      transition: transform .25s, box-shadow .25s;
+      animation: wa-pulse 3s infinite;
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 14px 40px rgba(37,211,102,.5); animation: none; }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 8px 28px rgba(37,211,102,.4); }
+      50% { box-shadow: 0 8px 28px rgba(37,211,102,.4), 0 0 0 10px rgba(37,211,102,.1); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1020px) {
+      .hero-content      { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid        { grid-template-columns: 1fr; }
+      .about-img         { aspect-ratio: 16/9; }
+      .treatments-grid   { grid-template-columns: 1fr 1fr; }
+      .tech-grid         { grid-template-columns: 1fr; }
+      .promos-grid       { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid      { grid-template-columns: 1fr; }
+      .footer-grid       { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .nav-links     { display: none; }
+      .nav-cta       { display: none; }
+      .hero h1       { font-size: 36px; }
+      .hero-content  { padding: 60px 0 50px; }
+      .treatments-grid   { grid-template-columns: 1fr; }
+      .promos-grid       { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .gallery-grid  { grid-template-columns: 1fr 1fr; }
+      .gallery-item.tall { grid-row: auto; }
+      .form-row      { grid-template-columns: 1fr; }
+      .footer-grid   { grid-template-columns: 1fr; }
+      .section-title { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-wrap">
+    <div class="container nav-inner">
+      <a href="#inicio" class="logo">
+        <span class="logo-main">Barcelona Clinic</span>
+        <span class="logo-sub">Estética Avanzada · Puerto Varas</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#disponibilidad">Disponibilidad</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#tratamientos">Tratamientos</a></li>
+          <li><a href="#tecnologia">Tecnología</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#contacto" class="btn btn-rose nav-cta" style="padding:11px 22px;">Reservar hora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <div class="hero-eyebrow">
+            <span class="hero-dot"></span>
+            Clínica de Estética Avanzada — Puerto Varas
+          </div>
+          <h1>Tu mejor versión <em>comienza aquí.</em></h1>
+          <p class="hero-desc">
+            Tratamientos de última generación con tecnología exclusiva en la zona.
+            Resultados visibles, experiencia única, cuidado personalizado en cada sesión.
+          </p>
+          <div class="hero-actions">
+            <a href="#disponibilidad" class="btn btn-rose">Ver horarios disponibles</a>
+            <a href="#contacto" class="btn btn-white">Agenda tu evaluación gratuita</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <p class="hero-card-tag">¿Por qué Barcelona Clinic?</p>
+          <h3>Tecnología exclusiva en Puerto Varas</h3>
+          <p>Somos la única clínica en Puerto Varas con Endymed e Hidrofacial certificados — los tratamientos más solicitados del momento.</p>
+          <div class="hero-feats">
+            <div class="hero-feat">
+              <span class="hero-feat-icon">✨</span>
+              <span>Endymed — Radiofrecuencia 3DEEP para rejuvenecimiento profundo</span>
+            </div>
+            <div class="hero-feat">
+              <span class="hero-feat-icon">💧</span>
+              <span>Hidrofacial — Limpieza, hidratación y nutrición en una sola sesión</span>
+            </div>
+            <div class="hero-feat">
+              <span class="hero-feat-icon">📍</span>
+              <span>Exclusivo en Puerto Varas — sin necesidad de viajar a la ciudad</span>
+            </div>
+            <div class="hero-feat">
+              <span class="hero-feat-icon">🏅</span>
+              <span>Profesionales certificadas, atención personalizada y seguimiento real</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <span class="stat-num">+500</span>
+          <p class="stat-label">Pacientes atendidas</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2</span>
+          <p class="stat-label">Tecnologías exclusivas</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <p class="stat-label">Satisfacción garantizada</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">1ª</span>
+          <p class="stat-label">Clínica con Endymed en la zona</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISPONIBILIDAD -->
+  <section id="disponibilidad" class="availability">
+    <div class="container">
+      <div class="availability-head">
+        <span class="kicker">Agenda en vivo</span>
+        <h2 class="section-title">Disponibilidad de <em>boxes</em></h2>
+        <p class="section-sub" style="margin:14px auto 0;text-align:center;">
+          Revisa en tiempo real cuándo hay horas disponibles. Para reservar contáctanos directamente.
+        </p>
+      </div>
+
+      <div class="avail-wrap">
+        <div class="avail-header">
+          <div class="avail-header-left">
+            <h3>Horarios disponibles</h3>
+            <p>Disponibilidad sincronizada en tiempo real · Solo muestra libre / ocupado</p>
+          </div>
+          <div class="avail-refresh" id="last-update">Actualizando…</div>
+        </div>
+        <div class="avail-body">
+          <div id="box-switch" class="box-switch">
+            <span style="font-size:14px;color:var(--text-light);">Cargando boxes…</span>
+          </div>
+
+          <div class="calendar-nav">
+            <div class="week-nav">
+              <button id="prev-week">← Anterior</button>
+              <div id="week-title" class="week-label">Cargando…</div>
+              <button id="next-week">Siguiente →</button>
+            </div>
+            <span style="font-size:12px;color:var(--text-light);">08:00 — 19:00 · lunes a sábado</span>
+          </div>
+
+          <div class="legend">
+            <span><i style="background:#D8F5E4;border:1px solid #7EC99A"></i> Disponible</span>
+            <span><i style="background:#FAE0E4;border:1px solid #E89AA5"></i> Ocupado</span>
+            <span><i style="background:#F3F3F3;border:1px solid #DCDCDC"></i> Pasado</span>
+          </div>
+
+          <div class="cal-scroll">
+            <table class="cal-table">
+              <thead id="calendar-head"></thead>
+              <tbody id="calendar-body"></tbody>
+            </table>
+          </div>
+
+          <div class="avail-cta">
+            <div>
+              <p><strong>¿Ves un horario disponible?</strong><br>Contáctanos por WhatsApp para confirmar tu reserva. Respuesta inmediata.</p>
+            </div>
+            <a id="wa-link" class="btn btn-rose" href="#" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img">
+          <div class="about-img-ph">
+            <div class="ph-icon">🏥</div>
+            <p>Foto de la clínica<br><span style="font-size:12px;opacity:.7">Reemplazar con imagen real</span></p>
+          </div>
+          <div class="about-accent">
+            <strong>Puerto Varas</strong>
+            <span>Ruta 225, Camino Ensenada</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="kicker">Sobre nosotros</span>
+          <h2 class="section-title">Expertos en <em>estética avanzada</em></h2>
+          <p class="section-sub">
+            Barcelona Clinic nació con la misión de llevar la más alta tecnología estética a Puerto Varas.
+            Contamos con equipos de última generación y un equipo de profesionales certificadas que te
+            acompañan en cada etapa de tu tratamiento.
+          </p>
+          <div class="about-feats">
+            <div class="about-feat">
+              <div class="about-feat-icon">🔬</div>
+              <h4>Tecnología de punta</h4>
+              <p>Equipos importados con certificación internacional</p>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon">👩‍⚕️</div>
+              <h4>Equipo certificado</h4>
+              <p>Profesionales especializadas y en constante actualización</p>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon">📋</div>
+              <h4>Plan personalizado</h4>
+              <p>Cada tratamiento diseñado según tu tipo de piel y objetivos</p>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon">⭐</div>
+              <h4>Seguimiento real</h4>
+              <p>Te acompañamos durante todo el proceso de transformación</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRATAMIENTOS -->
+  <section id="tratamientos" class="treatments">
+    <div class="container">
+      <div class="treatments-head">
+        <span class="kicker">Tratamientos</span>
+        <h2 class="section-title">Lo que <em>ofrecemos</em></h2>
+        <p class="section-sub" style="margin:14px auto 0;">
+          Cada tratamiento está diseñado para resultados visibles desde la primera sesión,
+          con protocolos adaptados a tu tipo de piel.
+        </p>
+      </div>
+      <div class="treatments-grid">
+        <article class="treatment-card">
+          <div class="treatment-img">✨</div>
+          <div class="treatment-body">
+            <span class="badge badge-rose" style="margin-bottom:10px;">Más solicitado</span>
+            <h3>Rejuvenecimiento Facial</h3>
+            <p>Estimula la producción de colágeno y elastina para recuperar la firmeza y luminosidad de la piel.</p>
+            <span class="treatment-cta">Saber más →</span>
+          </div>
+        </article>
+        <article class="treatment-card">
+          <div class="treatment-img">💧</div>
+          <div class="treatment-body">
+            <span class="badge badge-lila" style="margin-bottom:10px;">Exclusivo P. Varas</span>
+            <h3>Hidrofacial</h3>
+            <p>Limpieza profunda, hidratación intensa y nutrición activa en un solo tratamiento sin dolor ni tiempo de recuperación.</p>
+            <span class="treatment-cta">Saber más →</span>
+          </div>
+        </article>
+        <article class="treatment-card">
+          <div class="treatment-img">🔆</div>
+          <div class="treatment-body">
+            <span class="badge badge-gold" style="margin-bottom:10px;">Alta eficacia</span>
+            <h3>Radiofrecuencia Endymed</h3>
+            <p>Tecnología 3DEEP que actúa en profundidad para remodelación, reafirmación y eliminación de flaccidez.</p>
+            <span class="treatment-cta">Saber más →</span>
+          </div>
+        </article>
+        <article class="treatment-card">
+          <div class="treatment-img">🌿</div>
+          <div class="treatment-body">
+            <span class="badge badge-sage" style="margin-bottom:10px;">Corporal</span>
+            <h3>Tratamiento Corporal</h3>
+            <p>Protocolos especializados para reducción de medidas, reafirmación y mejora de la silueta corporal.</p>
+            <span class="treatment-cta">Saber más →</span>
+          </div>
+        </article>
+        <article class="treatment-card">
+          <div class="treatment-img">🌸</div>
+          <div class="treatment-body">
+            <span class="badge badge-rose" style="margin-bottom:10px;">Piel problemática</span>
+            <h3>Tratamiento Anti-Acné</h3>
+            <p>Protocolo profundo que combina limpieza activa, regulación sebácea y cicatrización para piel libre de imperfecciones.</p>
+            <span class="treatment-cta">Saber más →</span>
+          </div>
+        </article>
+        <article class="treatment-card">
+          <div class="treatment-img">🪡</div>
+          <div class="treatment-body">
+            <span class="badge badge-lila" style="margin-bottom:10px;">Bioestimulación</span>
+            <h3>Microagujas</h3>
+            <p>Bioestimulación controlada para mejorar textura, minimizar poros y cicatrices, con mínimo tiempo de recuperación.</p>
+            <span class="treatment-cta">Saber más →</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECNOLOGIA -->
+  <section id="tecnologia" class="tech">
+    <div class="tech-bg-blob tech-bg-1"></div>
+    <div class="tech-bg-blob tech-bg-2"></div>
+    <div class="container">
+      <div class="tech-head">
+        <span class="kicker">Tecnología exclusiva</span>
+        <h2 class="section-title" style="color:#fff;">Únicos en Puerto Varas</h2>
+        <p class="section-sub">
+          Traemos a la zona los dos tratamientos más avanzados y solicitados del momento,
+          sin que tengas que viajar.
+        </p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">⚡</div>
+          <div class="tech-badge">✦ Exclusivo en Puerto Varas</div>
+          <h3>Endymed 3DEEP</h3>
+          <p>
+            Radiofrecuencia profunda con tecnología 3DEEP que actúa en tres capas de la dermis simultáneamente.
+            Resultados visibles desde la primera sesión: piel más firme, remodelación facial y corporal sin cirugía.
+          </p>
+          <ul class="tech-feats">
+            <li>Reafirmación facial y corporal profunda</li>
+            <li>Estimulación de colágeno y elastina</li>
+            <li>Sin tiempo de recuperación</li>
+            <li>Resultados desde la primera sesión</li>
+            <li>Tecnología certificada internacionalmente</li>
+          </ul>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">💎</div>
+          <div class="tech-badge">✦ Exclusivo en Puerto Varas</div>
+          <h3>Hidrofacial</h3>
+          <p>
+            El tratamiento facial más solicitado del mundo: limpieza, exfoliación, extracción, hidratación y sueroterapia
+            en una sola sesión no invasiva. Piel radiante con cero tiempo de recuperación.
+          </p>
+          <ul class="tech-feats">
+            <li>Limpieza profunda y extracción sin dolor</li>
+            <li>Hidratación intensa con sueros activos</li>
+            <li>Mejora textura, poros y luminosidad</li>
+            <li>Apto para todo tipo de piel</li>
+            <li>Sin tiempo de recuperación</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOCIONES -->
+  <section id="promociones" class="promos">
+    <div class="container">
+      <div class="promos-head">
+        <span class="kicker">Ofertas especiales</span>
+        <h2 class="section-title">Promociones <em>del mes</em></h2>
+        <p class="section-sub" style="margin: 14px auto 0; text-align:center;">
+          Aprovecha nuestras promociones exclusivas con los mejores tratamientos de la zona.
+        </p>
+      </div>
+      <div class="promos-grid">
+        <div class="promo-card">
+          <span class="promo-tag first">Primera visita</span>
+          <h3>Evaluación Gratuita</h3>
+          <div class="promo-price"><span class="promo-currency">$</span>0</div>
+          <p class="promo-per">Evaluación inicial + diagnóstico de piel</p>
+          <ul class="promo-feats">
+            <li>Diagnóstico personalizado de piel</li>
+            <li>Plan de tratamiento a medida</li>
+            <li>Asesoría sin compromiso</li>
+            <li>Recomendación de productos</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline" style="width:100%;justify-content:center;">Agendar ahora</a>
+        </div>
+        <div class="promo-card featured">
+          <span class="promo-tag popular">Más popular</span>
+          <h3 style="color:#fff;">Pack Hidrofacial x3</h3>
+          <div class="promo-price"><span class="promo-currency">$</span>189.000</div>
+          <p class="promo-per">3 sesiones de Hidrofacial completo</p>
+          <ul class="promo-feats">
+            <li>3 sesiones de Hidrofacial premium</li>
+            <li>Sueros activos incluidos</li>
+            <li>Protocolo personalizado por sesión</li>
+            <li>Ahorro vs. sesiones individuales</li>
+          </ul>
+          <a href="https://wa.me/56937742182?text=Hola!%20Me%20interesa%20el%20Pack%20Hidrofacial%20x3" target="_blank" class="btn btn-rose" style="width:100%;justify-content:center;">Reservar pack</a>
+        </div>
+        <div class="promo-card">
+          <span class="promo-tag exclusive">Exclusivo</span>
+          <h3>Endymed + Hidrofacial</h3>
+          <div class="promo-price"><span class="promo-currency">$</span>95.000</div>
+          <p class="promo-per">Combo 2 tratamientos en una sesión</p>
+          <ul class="promo-feats">
+            <li>1 sesión Hidrofacial completa</li>
+            <li>1 sesión Endymed facial</li>
+            <li>Resultado potenciado combinado</li>
+            <li>Solo disponible en nuestra clínica</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline" style="width:100%;justify-content:center;">Consultar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="galeria" class="gallery">
+    <div class="container">
+      <div class="gallery-head">
+        <span class="kicker">Galería</span>
+        <h2 class="section-title">Nuestra <em>clínica</em></h2>
+        <p class="section-sub" style="margin:14px auto 0;text-align:center;">
+          Conoce nuestras instalaciones, equipos exclusivos y los resultados que logramos cada día en Puerto Varas.
+        </p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item tall">
+          <div class="gallery-ph">
+            <div class="ph-icon">🏥</div>
+            <p>Interior Clínica</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-ph">
+            <div class="ph-icon">⚡</div>
+            <p>Máquina Endymed</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-ph">
+            <div class="ph-icon">💧</div>
+            <p>Hidrofacial</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-ph">
+            <div class="ph-icon">✨</div>
+            <p>Sala de Tratamientos</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-ph">
+            <div class="ph-icon">👩‍⚕️</div>
+            <p>Equipo Profesional</p>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-cta">
+        <p style="font-size:14px;color:var(--text-light);margin-bottom:16px;">
+          Visita nuestro Instagram para ver más fotos y resultados
+        </p>
+        <a href="https://www.instagram.com/barcelonaclinic.pv/" target="_blank" class="gallery-ig">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          @barcelonaclinic.pv
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="testimonials">
+    <div class="container">
+      <div class="testimonials-head">
+        <span class="kicker">Testimonios</span>
+        <h2 class="section-title">Lo que dicen nuestras <em>pacientes</em></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Increíble experiencia. El tratamiento con Endymed me dejó la piel como nueva. Se nota que tienen la mejor tecnología de la zona."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MC</div>
+            <div>
+              <p class="testi-name">María C.</p>
+              <p class="testi-service">Rejuvenecimiento Facial</p>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La Hidrofacial es lo mejor que he probado. Mi piel quedó radiante desde la primera sesión. El equipo es muy profesional y atento."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PL</div>
+            <div>
+              <p class="testi-name">Paulina L.</p>
+              <p class="testi-service">Hidrofacial</p>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Llevo 3 sesiones de tratamiento corporal y los resultados son notorios. Muy contenta de tener esta tecnología aquí en Puerto Varas."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">CF</div>
+            <div>
+              <p class="testi-name">Carolina F.</p>
+              <p class="testi-service">Tratamiento Corporal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Lista para <em>transformar tu piel?</em></h2>
+      <p>Agenda tu evaluación gratuita y descubre el tratamiento ideal para ti.</p>
+      <div class="cta-btns">
+        <a href="#contacto" class="btn btn-rose">Reservar evaluación gratuita</a>
+        <a href="https://wa.me/56937742182?text=Hola!%20Me%20gustaría%20agendar%20una%20evaluación%20gratuita." target="_blank" class="btn btn-white">
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <div class="container">
+      <div class="contact-head">
+        <span class="kicker">Contacto</span>
+        <h2 class="section-title">Agenda tu <em>cita hoy</em></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <h4>Ubicación</h4>
+              <p>Ruta 225, Camino Ensenada — Puerto Varas</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-text">
+              <h4>Teléfono / WhatsApp</h4>
+              <a href="https://wa.me/56937742182">+56 9 3774 2182</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div class="info-text">
+              <h4>Email</h4>
+              <a href="mailto:contacto@barcelonaclinic.cl">contacto@barcelonaclinic.cl</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📸</div>
+            <div class="info-text">
+              <h4>Instagram</h4>
+              <a href="https://www.instagram.com/barcelonaclinic.pv/" target="_blank">@barcelonaclinic.pv</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Solicita tu evaluación gratuita</h3>
+          <form id="contact-form">
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input class="form-input" type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email</label>
+                <input class="form-input" type="email" placeholder="tu@email.com" required />
+              </div>
+              <div class="form-group">
+                <label>Teléfono</label>
+                <input class="form-input" type="tel" placeholder="+56 9..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Tratamiento de interés</label>
+              <select class="form-input form-select">
+                <option value="">Selecciona un tratamiento</option>
+                <option>Rejuvenecimiento Facial</option>
+                <option>Hidrofacial</option>
+                <option>Radiofrecuencia Endymed</option>
+                <option>Tratamiento Corporal</option>
+                <option>Anti-Acné</option>
+                <option>Microagujas</option>
+                <option>No lo sé aún / Quiero asesoría</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Cuéntanos sobre tu consulta</label>
+              <textarea class="form-input form-textarea" placeholder="Describe brevemente tu objetivo o consulta…"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            <p class="form-note">Te contactaremos en menos de 24 horas hábiles 🌸</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-main">Barcelona Clinic</span>
+            <span class="logo-sub">Estética Avanzada · Puerto Varas</span>
+          </div>
+          <p>Centro de estética avanzada en Puerto Varas. Tecnología exclusiva Endymed e Hidrofacial para tratamientos de clase mundial.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Tratamientos</h4>
+          <ul>
+            <li><a href="#tratamientos">Rejuvenecimiento Facial</a></li>
+            <li><a href="#tratamientos">Hidrofacial</a></li>
+            <li><a href="#tecnologia">Endymed</a></li>
+            <li><a href="#tratamientos">Tratamiento Corporal</a></li>
+            <li><a href="#tratamientos">Anti-Acné</a></li>
+            <li><a href="#tratamientos">Microagujas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#tecnologia">Tecnología</a></li>
+            <li><a href="#promociones">Promociones</a></li>
+            <li><a href="#disponibilidad">Disponibilidad</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#">Ruta 225, Camino Ensenada</a></li>
+            <li><a href="#">Puerto Varas, Chile</a></li>
+            <li><a href="https://wa.me/56937742182">+56 9 3774 2182</a></li>
+            <li><a href="mailto:contacto@barcelonaclinic.cl">contacto@barcelonaclinic.cl</a></li>
+            <li><a href="https://www.instagram.com/barcelonaclinic.pv/" target="_blank">@barcelonaclinic.pv</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Barcelona Clinic. Todos los derechos reservados.</p>
+        <p>Puerto Varas, Chile</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="wa-float" href="https://wa.me/56937742182?text=Hola!%20Me%20gustaría%20obtener%20información%20sobre%20los%20tratamientos." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    /* ── CONFIG — Supabase + WhatsApp ── */
+    const CONFIG = {
+      supabaseUrl:    "https://anvycdygzwopylmogvkm.supabase.co",
+      supabaseAnonKey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFudnljZHlnendvcHlsbW9ndmttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MzM3NDUsImV4cCI6MjA4OTEwOTc0NX0.tHwvxFnezFCKn_xeoo-8kvjCSVs5YsiTYQ3lQ-gRtb4",
+      whatsapp:       "56937742182"
+    };
+
+    const HOURS     = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
+    const DAY_NAMES = ["Lun","Mar","Mié","Jue","Vie","Sáb"];
+
+    /* Recurso físico: el Box Dental y el Box Estético comparten un mismo
+       espacio (calendario único); el Box Médico es independiente. */
+    const state = { boxes: [], arriendos: [], citas: [], recursos: [], selectedRecurso: null, weekOffset: 0 };
+
+    function recursoDeBox(box) {
+      const t = ((box.tipo || box.nombre) || "").toLowerCase()
+        .normalize("NFD").replace(/[̀-ͯ]/g, "");
+      return t.includes("medic") ? "medico" : "dental_estetico";
+    }
+
+    /* Modalidades (box_tipo de citas de pacientes) que ocupan cada recurso */
+    function tiposDelRecurso(recurso) {
+      return recurso === "medico" ? ["medico"] : ["dental", "estetico"];
+    }
+
+    function construirRecursos(boxes) {
+      const grupos = {};
+      boxes.forEach(b => {
+        const k = recursoDeBox(b);
+        if (!grupos[k]) grupos[k] = { key: k, nombre: k === "medico" ? "Box Médico" : "Box Dental / Estético", ids: [] };
+        grupos[k].ids.push(b.id);
+      });
+      return Object.values(grupos);
+    }
+
+    const $boxSwitch   = document.getElementById("box-switch");
+    const $weekTitle   = document.getElementById("week-title");
+    const $calHead     = document.getElementById("calendar-head");
+    const $calBody     = document.getElementById("calendar-body");
+    const $prevWeek    = document.getElementById("prev-week");
+    const $nextWeek    = document.getElementById("next-week");
+    const $waLink      = document.getElementById("wa-link");
+    const $lastUpdate  = document.getElementById("last-update");
+
+    $prevWeek.addEventListener("click", () => { state.weekOffset = Math.max(0, state.weekOffset - 1); renderCalendar(); });
+    $nextWeek.addEventListener("click", () => { state.weekOffset++; renderCalendar(); });
+
+    function getHeaders() {
+      return { apikey: CONFIG.supabaseAnonKey, Authorization: "Bearer " + CONFIG.supabaseAnonKey };
+    }
+
+    async function fetchJson(path) {
+      const res = await fetch(CONFIG.supabaseUrl + "/rest/v1/" + path, { headers: getHeaders() });
+      if (!res.ok) throw new Error("HTTP " + res.status + ": " + await res.text());
+      return res.json();
+    }
+
+    function boxLabel(box) {
+      if (!box) return "";
+      if (box.nombre && box.nombre.includes("·")) return box.nombre;
+      return box.tipo ? box.nombre + " · " + box.tipo : (box.nombre || "Box");
+    }
+
+    async function loadAvailability() {
+      try {
+        /* Intenta vistas públicas primero, si fallan cae a tablas directas */
+        let boxes, arriendos, citas;
+        try {
+          [boxes, arriendos] = await Promise.all([
+            fetchJson("public_boxes?select=id,nombre,tipo&order=nombre"),
+            fetchJson("public_disponibilidad?select=box_id,fecha,hora_inicio,hora_fin,estado")
+          ]);
+        } catch (_) {
+          [boxes, arriendos] = await Promise.all([
+            fetchJson("boxes?select=id,nombre,tipo,activo&activo=eq.true&order=nombre"),
+            fetchJson("arriendos?select=box_id,fecha,hora_inicio,hora_fin,estado&estado=in.(confirmado,pendiente)")
+          ]);
+        }
+        /* Las citas de pacientes también ocupan el recurso físico */
+        try {
+          citas = await fetchJson("solicitudes_paciente?select=box_tipo,fecha_solicitada,hora_inicio,hora_fin,estado&estado=in.(agendada,agendado,contactado,confirmada)");
+        } catch (_) { citas = []; }
+
+        state.boxes    = Array.isArray(boxes)    ? boxes    : [];
+        state.arriendos= Array.isArray(arriendos)? arriendos: [];
+        state.citas    = Array.isArray(citas)    ? citas    : [];
+        state.recursos = construirRecursos(state.boxes);
+        if (!state.selectedRecurso && state.recursos.length) state.selectedRecurso = state.recursos[0].key;
+
+        const now = new Date();
+        $lastUpdate.textContent = "Actualizado " + now.getHours() + ":" + String(now.getMinutes()).padStart(2,"0");
+        renderBoxButtons();
+        renderCalendar();
+      } catch (err) {
+        console.error(err);
+        $boxSwitch.innerHTML  = '<span style="font-size:14px;color:#B0455A;">No se pudo cargar la disponibilidad. Revisa tu conexión.</span>';
+        $calHead.innerHTML    = "";
+        $calBody.innerHTML    = '<tr><td colspan="8" style="padding:20px;text-align:center;color:#B0455A;font-size:14px;">Error al conectar con la base de datos.</td></tr>';
+        $lastUpdate.textContent = "Error";
+      }
+    }
+
+    function renderBoxButtons() {
+      if (!state.recursos.length) {
+        $boxSwitch.innerHTML = '<span style="font-size:14px;color:var(--text-light);">Sin boxes disponibles.</span>';
+        return;
+      }
+      $boxSwitch.innerHTML = state.recursos.map(r => {
+        const a = r.key === state.selectedRecurso;
+        return '<button class="box-btn' + (a ? ' active' : '') + '" data-key="' + r.key + '" type="button">' + r.nombre + '</button>';
+      }).join("") +
+      '<div style="flex-basis:100%;font-size:11px;color:var(--text-light);margin-top:6px;">' +
+      (state.selectedRecurso === "medico"
+        ? "Calendario independiente · reserva mínima de 2 horas consecutivas"
+        : "Dental y Estético comparten el mismo espacio físico: calendario único para ambas modalidades") +
+      '</div>';
+      $boxSwitch.querySelectorAll("[data-key]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.selectedRecurso = btn.dataset.key;
+          renderBoxButtons();
+          renderCalendar();
+        });
+      });
+    }
+
+    function weekStart(offset) {
+      const d = new Date();
+      const day = d.getDay();
+      d.setDate(d.getDate() - day + (day === 0 ? -6 : 1) + offset * 7);
+      d.setHours(0,0,0,0);
+      return d;
+    }
+
+    function isoDate(d) {
+      return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+    }
+
+    function buildDays() {
+      const mon = weekStart(state.weekOffset);
+      return DAY_NAMES.map((label, i) => {
+        const d = new Date(mon);
+        d.setDate(mon.getDate() + i);
+        return { label, date: isoDate(d) };
+      });
+    }
+
+    function isPast(dateISO, hour) {
+      return new Date(dateISO + "T" + hour + ":00") < new Date();
+    }
+
+    function isBusy(dateISO, hour) {
+      const rec = state.recursos.find(r => r.key === state.selectedRecurso);
+      if (!rec) return false;
+      const hh = h => (h || "").slice(0, 5);
+      const tipos = tiposDelRecurso(rec.key);
+      return state.arriendos.some(a =>
+        rec.ids.includes(a.box_id) &&
+        a.fecha === dateISO &&
+        hour >= hh(a.hora_inicio) &&
+        hour <  hh(a.hora_fin)
+      ) || state.citas.some(s =>
+        tipos.includes(s.box_tipo) &&
+        s.fecha_solicitada === dateISO &&
+        s.hora_inicio && s.hora_fin &&
+        hour >= hh(s.hora_inicio) &&
+        hour <  hh(s.hora_fin)
+      );
+    }
+
+    function renderCalendar() {
+      const selRec = state.recursos.find(r => r.key === state.selectedRecurso);
+      const days   = buildDays();
+      const today  = isoDate(new Date());
+
+      $weekTitle.textContent  = days[0].date.slice(5) + " — " + days[5].date.slice(5);
+      $prevWeek.disabled      = state.weekOffset === 0;
+
+      $calHead.innerHTML = "<tr><th>Hora</th>" +
+        days.map(d => '<th style="' + (d.date === today ? "color:var(--rose);font-weight:800;" : "") + '">' +
+          d.label + "<br><span style='font-size:9px;font-weight:500;opacity:.7'>" + d.date.slice(5) + "</span></th>"
+        ).join("") + "</tr>";
+
+      $calBody.innerHTML = HOURS.map(hour =>
+        "<tr><td class='hour-lbl'>" + hour + "</td>" +
+        days.map(d => {
+          const past = isPast(d.date, hour);
+          const busy = isBusy(d.date, hour);
+          let cls = "free", lbl = "✓";
+          if (past) { cls = "past"; lbl = "–"; }
+          if (busy) { cls = "busy"; lbl = "✕"; }
+          return "<td><div class='slot " + cls + "'>" + lbl + "</div></td>";
+        }).join("") + "</tr>"
+      ).join("");
+
+      const text = encodeURIComponent("Hola! Vi disponibilidad en " + (selRec ? selRec.nombre : "un box") + " y me gustaría reservar.");
+      $waLink.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + text;
+    }
+
+    /* ── Formulario → WhatsApp ── */
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data   = new FormData(this);
+      const nombre = this.querySelector('input[type="text"]').value;
+      const tel    = this.querySelector('input[type="tel"]').value;
+      const trat   = this.querySelector("select").value || "por definir";
+      const msg    = this.querySelector("textarea").value;
+      const text   = encodeURIComponent(
+        "Hola! Soy " + nombre + " y me gustaría agendar una evaluación.\n" +
+        "Tratamiento: " + trat + "\n" +
+        (tel ? "Teléfono: " + tel + "\n" : "") +
+        (msg ? "Consulta: " + msg : "")
+      );
+      window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + text, "_blank");
+    });
+
+    /* ── Start ── */
+    loadAvailability();
+    setInterval(loadAvailability, 120000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) loadAvailability(); });
+  </script>
+</body>
+</html>
