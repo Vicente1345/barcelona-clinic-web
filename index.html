@@ -1508,17 +1508,22 @@
       if (!rec) return false;
       const hh = h => (h || "").slice(0, 5);
       const tipos = tiposDelRecurso(rec.key);
+      /* La celda se marca ocupada si cualquier tramo de su hora se solapa con
+         una reserva (cubre reservas que parten a la media hora, ej: 09:30) */
+      const finCelda = (h) => {
+        const H = parseInt(h.split(":")[0], 10) + 1;
+        return String(H).padStart(2, "0") + ":00";
+      };
+      const solapa = (ini, fin) => hour < hh(fin) && finCelda(hour) > hh(ini);
       return state.arriendos.some(a =>
         rec.ids.includes(a.box_id) &&
         a.fecha === dateISO &&
-        hour >= hh(a.hora_inicio) &&
-        hour <  hh(a.hora_fin)
+        solapa(a.hora_inicio, a.hora_fin)
       ) || state.citas.some(s =>
         tipos.includes(s.box_tipo) &&
         s.fecha_solicitada === dateISO &&
         s.hora_inicio && s.hora_fin &&
-        hour >= hh(s.hora_inicio) &&
-        hour <  hh(s.hora_fin)
+        solapa(s.hora_inicio, s.hora_fin)
       );
     }
 
