@@ -839,7 +839,7 @@
               <div id="week-title" class="week-label">Cargando…</div>
               <button id="next-week">Siguiente →</button>
             </div>
-            <span style="font-size:12px;color:var(--text-light);">08:00 — 19:00 · lunes a sábado</span>
+            <span style="font-size:12px;color:var(--text-light);">08:00 — 19:00 · todos los días</span>
           </div>
 
           <div class="legend">
@@ -1361,7 +1361,7 @@
     };
 
     const HOURS     = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
-    const DAY_NAMES = ["Lun","Mar","Mié","Jue","Vie","Sáb"];
+    const DAY_NAMES = ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
 
     /* Recurso físico: el Box Dental y el Box Estético comparten un mismo
        espacio (calendario único); el Box Médico es independiente. */
@@ -1527,7 +1527,7 @@
       const days   = buildDays();
       const today  = isoDate(new Date());
 
-      $weekTitle.textContent  = days[0].date.slice(5) + " — " + days[5].date.slice(5);
+      $weekTitle.textContent  = days[0].date.slice(5) + " — " + days[days.length - 1].date.slice(5);
       $prevWeek.disabled      = state.weekOffset === 0;
 
       $calHead.innerHTML = "<tr><th>Hora</th>" +
