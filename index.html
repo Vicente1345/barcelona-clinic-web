@@ -1370,19 +1370,23 @@
     function recursoDeBox(box) {
       const t = ((box.tipo || box.nombre) || "").toLowerCase()
         .normalize("NFD").replace(/[̀-ͯ]/g, "");
-      return t.includes("medic") ? "medico" : "dental_estetico";
+      if (t.includes("pabell")) return "pabellon";
+      if (t.includes("dental")) return "dental";
+      return "medico_estetico"; /* medico y estetico comparten el Box Mixto */
     }
 
     /* Modalidades (box_tipo de citas de pacientes) que ocupan cada recurso */
     function tiposDelRecurso(recurso) {
-      return recurso === "medico" ? ["medico"] : ["dental", "estetico"];
+      if (recurso === "dental")   return ["dental"];
+      if (recurso === "pabellon") return ["pabellon"];
+      return ["medico", "estetico"];
     }
 
     function construirRecursos(boxes) {
       const grupos = {};
       boxes.forEach(b => {
         const k = recursoDeBox(b);
-        if (!grupos[k]) grupos[k] = { key: k, nombre: k === "medico" ? "Box Médico" : "Box Dental / Estético", ids: [] };
+        if (!grupos[k]) grupos[k] = { key: k, nombre: k === "dental" ? "Box Dental" : k === "pabellon" ? "Pabellón" : "Box Mixto Médico / Estético", ids: [] };
         grupos[k].ids.push(b.id);
       });
       return Object.values(grupos);
@@ -1465,9 +1469,11 @@
         return '<button class="box-btn' + (a ? ' active' : '') + '" data-key="' + r.key + '" type="button">' + r.nombre + '</button>';
       }).join("") +
       '<div style="flex-basis:100%;font-size:11px;color:var(--text-light);margin-top:6px;">' +
-      (state.selectedRecurso === "medico"
-        ? "Calendario independiente · reserva mínima de 2 horas consecutivas"
-        : "Dental y Estético comparten el mismo espacio físico: calendario único para ambas modalidades") +
+      (state.selectedRecurso === "medico_estetico"
+        ? "Médico y Estético comparten el mismo espacio físico (Box Mixto): calendario único para ambas modalidades"
+        : state.selectedRecurso === "pabellon"
+        ? "Agenda independiente · bloques de 1, 2, 4 u 8 horas"
+        : "Calendario propio e independiente del resto de los espacios") +
       '</div>';
       $boxSwitch.querySelectorAll("[data-key]").forEach(btn => {
         btn.addEventListener("click", () => {
