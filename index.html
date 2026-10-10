@@ -1355,8 +1355,6 @@
   <script>
     /* ── CONFIG — Supabase + WhatsApp ── */
     const CONFIG = {
-      supabaseUrl:    "https://anvycdygzwopylmogvkm.supabase.co",
-      supabaseAnonKey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFudnljZHlnendvcHlsbW9ndmttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MzM3NDUsImV4cCI6MjA4OTEwOTc0NX0.tHwvxFnezFCKn_xeoo-8kvjCSVs5YsiTYQ3lQ-gRtb4",
       whatsapp:       "56937742182"
     };
 
@@ -1402,16 +1400,6 @@
     $prevWeek.addEventListener("click", () => { state.weekOffset = Math.max(0, state.weekOffset - 1); renderCalendar(); });
     $nextWeek.addEventListener("click", () => { state.weekOffset++; renderCalendar(); });
 
-    function getHeaders() {
-      return { apikey: CONFIG.supabaseAnonKey, Authorization: "Bearer " + CONFIG.supabaseAnonKey };
-    }
-
-    async function fetchJson(path) {
-      const res = await fetch(CONFIG.supabaseUrl + "/rest/v1/" + path, { headers: getHeaders() });
-      if (!res.ok) throw new Error("HTTP " + res.status + ": " + await res.text());
-      return res.json();
-    }
-
     function boxLabel(box) {
       if (!box) return "";
       if (box.nombre && box.nombre.includes("·")) return box.nombre;
@@ -1420,23 +1408,16 @@
 
     async function loadAvailability() {
       try {
-        /* Intenta vistas públicas primero, si fallan cae a tablas directas */
-        let boxes, arriendos, citas;
-        try {
-          [boxes, arriendos] = await Promise.all([
-            fetchJson("public_boxes?select=id,nombre,tipo&order=nombre"),
-            fetchJson("public_disponibilidad?select=box_id,fecha,hora_inicio,hora_fin,estado")
-          ]);
-        } catch (_) {
-          [boxes, arriendos] = await Promise.all([
-            fetchJson("boxes?select=id,nombre,tipo,activo&activo=eq.true&order=nombre"),
-            fetchJson("arriendos?select=box_id,fecha,hora_inicio,hora_fin,estado&estado=in.(confirmado,pendiente)")
-          ]);
-        }
-        /* Las citas de pacientes también ocupan el recurso físico */
-        try {
-          citas = await fetchJson("solicitudes_paciente?select=box_tipo,fecha_solicitada,hora_inicio,hora_fin,estado&estado=in.(agendada,agendado,contactado,confirmada)");
-        } catch (_) { citas = []; }
+        /* Disponibilidad sanitizada desde la plataforma (CORS abierto para
+           este widget): slots de ocupación sin nombres, montos ni datos de
+           pacientes. La lectura directa a Supabase quedó cerrada por RLS. */
+        const res = await fetch("https://clinica-estetica-theta.vercel.app/api/ocupacion");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || "sin datos");
+        const boxes = (data.boxes || []).filter(function(b){ return b.activo; });
+        const arriendos = data.arriendos || [];
+        const citas = data.citas || [];
 
         state.boxes    = Array.isArray(boxes)    ? boxes    : [];
         state.arriendos= Array.isArray(arriendos)? arriendos: [];
