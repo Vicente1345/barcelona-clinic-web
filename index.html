@@ -1370,15 +1370,13 @@
     function recursoDeBox(box) {
       const t = ((box.tipo || box.nombre) || "").toLowerCase()
         .normalize("NFD").replace(/[̀-ͯ]/g, "");
-      if (t.includes("pabell")) return "pabellon";
-      if (t.includes("dental")) return "dental";
+      if (t.includes("pabell") || t.includes("dental")) return "dental_pabellon"; /* comparten recinto */
       return "medico_estetico"; /* medico y estetico comparten el Box Mixto */
     }
 
     /* Modalidades (box_tipo de citas de pacientes) que ocupan cada recurso */
     function tiposDelRecurso(recurso) {
-      if (recurso === "dental")   return ["dental"];
-      if (recurso === "pabellon") return ["pabellon"];
+      if (recurso === "dental_pabellon") return ["dental", "pabellon"];
       return ["medico", "estetico"];
     }
 
@@ -1386,7 +1384,7 @@
       const grupos = {};
       boxes.forEach(b => {
         const k = recursoDeBox(b);
-        if (!grupos[k]) grupos[k] = { key: k, nombre: k === "dental" ? "Box Dental" : k === "pabellon" ? "Pabellón" : "Box Mixto Médico / Estético", ids: [] };
+        if (!grupos[k]) grupos[k] = { key: k, nombre: k === "dental_pabellon" ? "Box Dental / Pabellón" : "Box Mixto Médico / Estético", ids: [] };
         grupos[k].ids.push(b.id);
       });
       return Object.values(grupos);
@@ -1471,9 +1469,7 @@
       '<div style="flex-basis:100%;font-size:11px;color:var(--text-light);margin-top:6px;">' +
       (state.selectedRecurso === "medico_estetico"
         ? "Médico y Estético comparten el mismo espacio físico (Box Mixto): calendario único para ambas modalidades"
-        : state.selectedRecurso === "pabellon"
-        ? "Agenda independiente · bloques de 1, 2, 4 u 8 horas"
-        : "Calendario propio e independiente del resto de los espacios") +
+        : "Dental y Pabellón comparten el mismo espacio físico: calendario único · Pabellón en bloques de 1, 2, 4 u 8 horas") +
       '</div>';
       $boxSwitch.querySelectorAll("[data-key]").forEach(btn => {
         btn.addEventListener("click", () => {
